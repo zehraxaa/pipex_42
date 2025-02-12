@@ -6,7 +6,7 @@
 /*   By: aaydogdu <aaydogdu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:31:17 by aaydogdu          #+#    #+#             */
-/*   Updated: 2025/02/12 15:01:32 by aaydogdu         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:50:08 by aaydogdu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,8 @@
 # include <stdlib.h>
 # include <errno.h>
 
-void	error_perm(void);
-void    error_not_found(void);
-void    error_open(void);
-void	error_pipe(void);
+void	error_126(void);
+void	error_1(void);
 void	error_argc(void);
 void	error_fork(void);
 void	ft_free(char **tab);

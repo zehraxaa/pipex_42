@@ -6,44 +6,11 @@
 /*   By: aaydogdu <aaydogdu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:33:13 by aaydogdu          #+#    #+#             */
-/*   Updated: 2025/02/12 15:04:06 by aaydogdu         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:57:12 by aaydogdu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-void	error_perm(void)
-{
-	ft_putstr_fd("\e[35mpermission denied\n\e[0m", 2);
-	exit(126);
-}
-void	error_not_found(void)
-{
-	ft_putstr_fd("\e[35mcommand not found\n\e[0m", 2);
-	exit(127);
-}
-void	error_open(void)
-{
-	ft_putstr_fd("\e[35mNo such file or directory\n\e[0m", 2);
-	exit(1);
-}
-
-void	error_pipe(void)
-{
-	ft_putstr_fd("\e[35mToo many open files\n\e[0m", 2);
-	exit(1);
-}
-
-void	error_argc(void)
-{
-	ft_putstr_fd("\e[35mWrong number of arguments\n\e[0m", 2);
-	exit(2);
-}
-void	error_fork(void)
-{
-	ft_putstr_fd("\e[35mFork error\n\e[0m", 2);
-	exit(2);
-}
 
 void	ft_free(char **tab)
 {
@@ -120,12 +87,12 @@ void	execute(char *cmd, char **env)
 	if (!s_cmd || !s_cmd[0])
 	{
 		ft_free(s_cmd);
-		error_perm();
+		error_126();
 	}
 	path = find_path(s_cmd[0], env);
 	if (!path)
 	{
-		ft_putstr_fd("\e[35mpipex: command not found: [0m", 2);
+		ft_putstr_fd("\e[35mpipex: command not found:\e[0m", 2);
 		ft_putendl_fd(s_cmd[0], 2);
 		ft_free(s_cmd);
 		exit(127);

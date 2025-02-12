@@ -1,6 +1,6 @@
 NAME = pipex
 CC = cc
-SRCS = pipex.c utils.c
+SRCS = pipex.c utils.c errors.c
 CFLAGS = -Wall -Wextra -Werror
 OBJS = $(SRCS:.c=.o)
 

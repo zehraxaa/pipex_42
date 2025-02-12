@@ -6,7 +6,7 @@
 /*   By: aaydogdu <aaydogdu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:42:34 by aaydogdu          #+#    #+#             */
-/*   Updated: 2025/02/12 15:00:48 by aaydogdu         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:52:20 by aaydogdu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	child_process(char **av, int *p_fd, char **env)
 
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
-		error_open();
+		error_1();
 	dup2(fd, 0);
 	dup2(p_fd[1], 1);
 	close(fd);
@@ -33,7 +33,7 @@ void	parent_process(char **av, int *p_fd, char **env)
 
 	fd = open(av[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd == -1)
-		error_open();
+		error_1();
 	dup2(fd, 1);
 	dup2(p_fd[0], 0);
 	close(fd);
@@ -48,7 +48,7 @@ int	main(int ac, char **av, char **env)
 	int	pid;
 
 	if ((pipe(fd)) == -1)
-		error_pipe();
+		error_1();
 	if (ac == 5)
 	{
 		pid = fork();
@@ -56,11 +56,8 @@ int	main(int ac, char **av, char **env)
 			error_fork();
 		if (pid == 0)
 			child_process(av, fd, env);
-		if (pid != 0)
+		if (pid > 0)
 			parent_process(av, fd, env);
-		close(fd[0]);
-		close(fd[1]);
-		wait(NULL);
 		wait(NULL);
 	}
 	else
