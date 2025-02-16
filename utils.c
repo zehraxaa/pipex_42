@@ -6,7 +6,7 @@
 /*   By: aaydogdu <aaydogdu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:33:13 by aaydogdu          #+#    #+#             */
-/*   Updated: 2025/02/12 16:57:12 by aaydogdu         ###   ########.fr       */
+/*   Updated: 2025/02/13 10:08:44 by aaydogdu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	execute(char *cmd, char **env)
 	path = find_path(s_cmd[0], env);
 	if (!path)
 	{
-		ft_putstr_fd("\e[35mpipex: command not found:\e[0m", 2);
+		ft_putstr_fd("\e[35mpipex: command not found: \e[0m", 2);
 		ft_putendl_fd(s_cmd[0], 2);
 		ft_free(s_cmd);
 		exit(127);
